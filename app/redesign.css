@@ -124,3 +124,16 @@ body{background:#fff}h1,h2{font-weight:400;letter-spacing:-.055em}h2 span{color:
 .chat-foot button{width:34px;height:34px;flex:none;border:0;border-radius:50%;background:var(--green);color:var(--lime);display:flex;align-items:center;justify-content:center;cursor:pointer}
 @media(max-width:600px){.chat-widget{right:16px;bottom:16px}.chat-launcher{width:50px;height:50px}}
 @media(prefers-reduced-motion:reduce){.chat-panel{animation:none}.chat-launcher{transition:none}}
+
+/* --- oversized footer wordmark --- */
+.footer{overflow:hidden;padding-bottom:0}
+.footer-wordmark{margin-top:52px;line-height:0;pointer-events:none;user-select:none}
+.footer-wordmark svg{display:block;width:100%;height:auto;overflow:hidden}
+.footer-wordmark text{font-family:Poppins,system-ui,sans-serif;font-weight:600;font-size:219.6px;letter-spacing:-.055em;fill:#ffffff;fill-opacity:.095}
+@media(max-width:1024px){.footer-wordmark{margin-top:44px}}
+@media(max-width:600px){.footer-wordmark{margin-top:34px}.footer-wordmark text{fill-opacity:.11}}
+
+/* --- hide the header once the footer comes into view --- */
+.header,.header-home{transition:background .3s,box-shadow .3s,transform .4s cubic-bezier(.4,0,.2,1)}
+.header.is-hidden{transform:translateY(-105%);pointer-events:none}
+@media(prefers-reduced-motion:reduce){.header,.header-home{transition:none}}
