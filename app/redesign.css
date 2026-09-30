@@ -137,3 +137,13 @@ body{background:#fff}h1,h2{font-weight:400;letter-spacing:-.055em}h2 span{color:
 .header,.header-home{transition:background .3s,box-shadow .3s,transform .4s cubic-bezier(.4,0,.2,1)}
 .header.is-hidden{transform:translateY(-105%);pointer-events:none}
 @media(prefers-reduced-motion:reduce){.header,.header-home{transition:none}}
+
+/* --- hero headline: one unbroken line per phrase, both bold --- */
+/* Poppins ships 300-600 here, so 600 is the heaviest real weight. */
+/* "Beautiful grass." measures 6.858em at 600 with -.06em tracking, so the
+   cap is 5rem: 80px x 6.858 = 549px inside the 580px card. The old 6rem cap
+   needed 658px and wrapped on wide screens. */
+.hero-editorial-card h1{font-weight:600;white-space:nowrap;font-size:clamp(3.5rem,6.6vw,5rem)}
+.hero-editorial-card h1 em{font-weight:600}
+/* Below 780px the card is 88vw, so the floor has to drop or small phones overflow. */
+@media(max-width:780px){.hero-editorial-card h1{font-size:clamp(2.4rem,11vw,5rem)}}
