@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist/client",
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/products", "destination": "/products-gator-turf/", "permanent": true },
+    { "source": "/products/", "destination": "/products-gator-turf/", "permanent": true },
+    { "source": "/applications/golf", "destination": "/applications/artificial-grass-for-golf-courses/", "permanent": true },
+    { "source": "/applications/golf/", "destination": "/applications/artificial-grass-for-golf-courses/", "permanent": true },
+    { "source": "/artificial-grass-installers-near-me-in-palm-beach-county-copy", "destination": "/artificial-grass-installers-near-me-in-palm-beach-county/", "permanent": true },
+    { "source": "/artificial-grass-installers-near-me-in-palm-beach-county-copy/", "destination": "/artificial-grass-installers-near-me-in-palm-beach-county/", "permanent": true }
+  ]
+}

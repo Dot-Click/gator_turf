@@ -14,6 +14,16 @@ const products=content.products;
 const posts=pages.filter(p=>p.type==='post').sort((a,b)=>b.date.localeCompare(a.date));
 const categories=[['All products','/products-gator-turf/'],['Residential','/product_categories/residential/'],['Commercial','/product_categories/commercial/'],['Hedge mats','/product_categories/hedge-mats/'],['Topiary ball','/product_categories/topiary-ball/']];
 const titles:Record<string,string>={'/applications/':'Turf for the way you live','/products-gator-turf/':'Our products','/contact/':'Get a free quote','/about/':'About Gator Turf','/company/':'About Gator Turf','/gallery/':'Our work','/blog/':'The Gator Turf journal','/faqs/':'Frequently asked questions','/service-areas/':'Florida service areas','/pay-online/':'Pay online'};
+// Routes the catch-all serves that are not listed in lib/content.json.
+const standaloneRoutes=['/service-areas/','/pay-online/'];
+// output:'export' prerenders exactly these paths. '/' is excluded because
+// app/page.tsx owns it. The legacy alias paths handled by redirect() below
+// are excluded too and are served as redirects by vercel.json instead,
+// since redirect() cannot run at export time.
+export function generateStaticParams(){
+ const all=[...pages.map(p=>p.path),...products.map(p=>p.path),...standaloneRoutes];
+ return [...new Set(all)].filter(path=>path!=='/').map(path=>({slug:path.split('/').filter(Boolean)}));
+}
 export async function generateMetadata({params}:{params:Promise<{slug:string[]}>}):Promise<Metadata>{const {slug}=await params;const path='/'+slug.join('/')+'/';const page=pages.find(p=>p.path===path);const product=products.find(p=>p.path===path);return {title:titles[path]||product?.title||page?.title||'Gator Turf',description:page?.description||'Premium artificial turf, thoughtful installation and outdoor spaces made for Florida living.'}}
 function Intro({title,eyebrow,description}:{title:string,eyebrow:string,description?:string}){return <div className="container"><Breadcrumb title={eyebrow}/><PageIntro title={title} eyebrow={eyebrow} description={description}/></div>}
 function Related({items=products.slice(0,3)}:{items?:typeof products}){return <section className="container related-products"><div className="section-heading"><div><span className="eyebrow">Explore the collection</span><h2>Find your perfect green.</h2></div><TextLink href="/products-gator-turf/">View all products</TextLink></div><div className="product-grid">{items.slice(0,3).map(p=><ProductCard key={p.path} product={p}/>)}</div></section>}
