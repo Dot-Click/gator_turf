@@ -206,3 +206,24 @@ body{background:#fff}h1,h2{font-weight:400;letter-spacing:-.055em}h2 span{color:
  .header .nav{height:76px;padding-left:5%}
  .header .logo img{height:50px}
 }
+
+/* --- footer: logo/social header row, office locations + email, link columns --- */
+.footer-head{display:flex;align-items:center;gap:34px;padding-bottom:46px}
+.footer-head .footer-brand{display:inline-flex}
+.footer-rule{flex:1;height:1px;background:#ffffff2e}
+.footer-social{display:flex;gap:12px;flex:none}
+.footer-social a{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--lime);color:#153a22;margin:0;flex:none}
+.footer-social a svg{width:18px;height:18px}
+.footer-social a:hover{background:#c3e08f;color:#153a22}
+.footer-top{align-items:start}
+.footer-locations{display:flex;flex-direction:column;gap:22px}
+.footer-office{display:flex;gap:12px;align-items:flex-start}
+.footer-office svg{flex:none;width:18px;height:18px;margin-top:3px;color:#8fac7f}
+.footer-office>div{display:flex;flex-direction:column}
+.footer-office strong{color:#d4e9b2;font-size:.8rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px}
+.footer-office span,.footer-office a{display:block;font-size:.78rem;color:#b4c3b6;margin:0 0 2px;line-height:1.6}
+.footer-office a{color:#b4c3b6}
+.footer-office a:hover{color:white}
+.footer-office.footer-email strong{margin-bottom:6px}
+.footer-top h3{text-transform:uppercase;letter-spacing:.06em;font-weight:500}
+@media(max-width:780px){.footer-head{flex-wrap:wrap;gap:20px 18px;padding-bottom:34px}.footer-rule{display:none}.footer-locations{gap:26px}}
